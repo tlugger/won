@@ -1,0 +1,2 @@
+export WONAPIKEY=<your-api-key>
+export WONLATLONG=<your-latitude>,<your-longitude>
