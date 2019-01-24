@@ -2,11 +2,10 @@
 A small CLI tool for getting live weather forecasts straight to your terminal
 
 ## Installation
-Clone this repo and set GOPATH
+Clone this repo
 ```
 git clone https://github.com/tlugger/weather-or-not
 cd weather-or-not
-export GOPATH=$PWD
 ```
 
 Copy weather-or-not env file
