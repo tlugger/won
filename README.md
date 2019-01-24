@@ -11,7 +11,6 @@ export GOPATH=$PWD
 
 Copy weather-or-not env file
 ```
-cd src
 cp .wonenv.example .wonenv
 ```
 
