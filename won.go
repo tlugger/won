@@ -66,6 +66,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "won"
 	app.Usage = "Weather or not (here it comes)"
+	app.Version = "0.1.0"
 	app.Action = func(c *cli.Context) error {
 		fmt.Printf("Current condition: %s\n", current)
 		fmt.Printf("Current temperature: %.2f°F\n", temperature)
