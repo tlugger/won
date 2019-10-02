@@ -4,20 +4,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 	"strings"
-
-	"github.com/urfave/cli"
 )
 
-// Weather unpacks the DarkSky data
 type Weather struct {
 	Current Currently `json:"currently"`
 }
 
-// Currently pulls summary and temperature from currently
 type Currently struct {
 	Summary     string  `json:"summary"`
 	Temperature float64 `json:"temperature"`
@@ -35,7 +30,7 @@ func getWeather(body []byte) (*Weather, error) {
 	return w, err
 }
 
-func getConditions() (string, float64) {
+func main() {
 	apikey := os.Getenv("WONAPIKEY")
 	latLong := os.Getenv("WONLATLONG")
 
@@ -44,37 +39,19 @@ func getConditions() (string, float64) {
 
 	resp, err := getRequest(url)
 	if err != nil {
-		log.Fatal(err)
+		panic(err.Error())
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		log.Fatal(err)
+		panic(err.Error())
 	}
 
 	w, err := getWeather([]byte(body))
 	if err != nil {
-		log.Fatal(err)
+		panic(err.Error())
 	}
 
-	return w.Current.Summary, w.Current.Temperature
-}
-
-func main() {
-	current, temperature := getConditions()
-
-	app := cli.NewApp()
-	app.Name = "won"
-	app.Usage = "Weather or not (here it comes)"
-	app.Version = "0.1.0"
-	app.Action = func(c *cli.Context) error {
-		fmt.Printf("Current condition: %s\n", current)
-		fmt.Printf("Current temperature: %.2f°F\n", temperature)
-		return nil
-	}
-
-	err := app.Run(os.Args)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fmt.Printf("Current condition: %s\n", w.Current.Summary)
+	fmt.Printf("Current temperature: %.2f°F\n", w.Current.Temperature)
 }
