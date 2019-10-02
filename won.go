@@ -2,8 +2,8 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -52,6 +52,6 @@ func main() {
 		panic(err.Error())
 	}
 
-	fmt.Printf("Current condition: %s\n", w.Current.Summary)
-	fmt.Printf("Current temperature: %.2f°F\n", w.Current.Temperature)
+	log.Printf("Current condition: %s\n", w.Current.Summary)
+	log.Printf("Current temperature: %.2f°F\n", w.Current.Temperature)
 }
