@@ -1,10 +1,10 @@
-# weather-or-not
+# Weather or not
 A small CLI tool for getting live weather forecasts straight to your terminal
 
 ## Installation
 Clone this repo
 ```
-git clone https://github.com/tlugger/weather-or-not won
+git clone https://github.com/tlugger/won
 cd won
 ```
 
